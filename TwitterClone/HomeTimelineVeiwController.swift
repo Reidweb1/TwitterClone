@@ -27,10 +27,11 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
 			
 			self.tweets = Tweet.parseJOSNDataIntoTweets(jsonData!)
 			
+			self.tweets = self.tweets?.sorted({ (tweet1: Tweet, tweet2: Tweet) -> Bool in
+				return tweet1.text < tweet2.text
+			})
 		}
-		
-        // Do any additional setup after loading the view.
-    }
+	}
 
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
@@ -52,5 +53,4 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
 	func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 		println("Selected \(indexPath.row)")
 	}
-	
 }
