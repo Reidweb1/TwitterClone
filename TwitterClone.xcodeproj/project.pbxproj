@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		281295BD19E3097F00541AE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281295BC19E3097F00541AE8 /* AppDelegate.swift */; };
 		281295C019E3097F00541AE8 /* TwitterClone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 281295BE19E3097F00541AE8 /* TwitterClone.xcdatamodeld */; };
-		281295C219E3097F00541AE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281295C119E3097F00541AE8 /* ViewController.swift */; };
 		281295C519E3097F00541AE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281295C319E3097F00541AE8 /* Main.storyboard */; };
 		281295C719E3097F00541AE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281295C619E3097F00541AE8 /* Images.xcassets */; };
 		281295CA19E3097F00541AE8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281295C819E3097F00541AE8 /* LaunchScreen.xib */; };
 		281295D619E3097F00541AE8 /* TwitterCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281295D519E3097F00541AE8 /* TwitterCloneTests.swift */; };
+		281295E319E309E900541AE8 /* HomeTimelineVeiwController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281295E219E309E900541AE8 /* HomeTimelineVeiwController.swift */; };
+		281295E519E3135700541AE8 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281295E419E3135700541AE8 /* Tweet.swift */; };
+		281295EB19E3349800541AE8 /* tweet.json in Resources */ = {isa = PBXBuildFile; fileRef = 281295EA19E3349800541AE8 /* tweet.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +33,15 @@
 		281295BB19E3097F00541AE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		281295BC19E3097F00541AE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		281295BF19E3097F00541AE8 /* TwitterClone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TwitterClone.xcdatamodel; sourceTree = "<group>"; };
-		281295C119E3097F00541AE8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		281295C419E3097F00541AE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		281295C619E3097F00541AE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		281295C919E3097F00541AE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		281295CF19E3097F00541AE8 /* TwitterCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		281295D419E3097F00541AE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		281295D519E3097F00541AE8 /* TwitterCloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterCloneTests.swift; sourceTree = "<group>"; };
+		281295E219E309E900541AE8 /* HomeTimelineVeiwController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTimelineVeiwController.swift; sourceTree = "<group>"; };
+		281295E419E3135700541AE8 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		281295EA19E3349800541AE8 /* tweet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tweet.json; path = "../../sea-b23-iOS/TwitterClone/TwitterClone/tweet.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +83,10 @@
 		281295B919E3097F00541AE8 /* TwitterClone */ = {
 			isa = PBXGroup;
 			children = (
+				281295E119E309A000541AE8 /* Controller Layer */,
+				281295E019E3099800541AE8 /* View Layer */,
+				281295DF19E3099000541AE8 /* Model Layer */,
 				281295BC19E3097F00541AE8 /* AppDelegate.swift */,
-				281295C119E3097F00541AE8 /* ViewController.swift */,
 				281295C319E3097F00541AE8 /* Main.storyboard */,
 				281295C619E3097F00541AE8 /* Images.xcassets */,
 				281295C819E3097F00541AE8 /* LaunchScreen.xib */,
@@ -113,6 +119,30 @@
 				281295D419E3097F00541AE8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		281295DF19E3099000541AE8 /* Model Layer */ = {
+			isa = PBXGroup;
+			children = (
+				281295EA19E3349800541AE8 /* tweet.json */,
+				281295E419E3135700541AE8 /* Tweet.swift */,
+			);
+			name = "Model Layer";
+			sourceTree = "<group>";
+		};
+		281295E019E3099800541AE8 /* View Layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Layer";
+			sourceTree = "<group>";
+		};
+		281295E119E309A000541AE8 /* Controller Layer */ = {
+			isa = PBXGroup;
+			children = (
+				281295E219E309E900541AE8 /* HomeTimelineVeiwController.swift */,
+			);
+			name = "Controller Layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +228,7 @@
 				281295C519E3097F00541AE8 /* Main.storyboard in Resources */,
 				281295CA19E3097F00541AE8 /* LaunchScreen.xib in Resources */,
 				281295C719E3097F00541AE8 /* Images.xcassets in Resources */,
+				281295EB19E3349800541AE8 /* tweet.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +246,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				281295C219E3097F00541AE8 /* ViewController.swift in Sources */,
+				281295E319E309E900541AE8 /* HomeTimelineVeiwController.swift in Sources */,
 				281295BD19E3097F00541AE8 /* AppDelegate.swift in Sources */,
 				281295C019E3097F00541AE8 /* TwitterClone.xcdatamodeld in Sources */,
+				281295E519E3135700541AE8 /* Tweet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
