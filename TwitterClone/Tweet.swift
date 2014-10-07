@@ -7,15 +7,22 @@
 //
 
 import Foundation
+import UIKit
 
 class Tweet {
 	
 	// Properties need a default value, marked as an optional, or in an initializer
 	
 	var text: String?
+	var avatarImage: UIImage?
+	var userName: String?
 	
 	init (tweetInfo : NSDictionary) {
 		self.text = tweetInfo["text"] as? String
+		var userDictionary = tweetInfo["user"] as NSDictionary
+		self.userName = userDictionary["name"] as? String
+		var imageURL = NSURL(string: (userDictionary["profile_image_url"] as? String)!)
+		self.avatarImage = UIImage(data: NSData(contentsOfURL: imageURL))
 	}
 	
 	// Factory method will produce the class
