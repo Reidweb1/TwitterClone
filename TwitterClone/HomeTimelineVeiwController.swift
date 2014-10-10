@@ -19,6 +19,8 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		self.tableView.registerNib(UINib(nibName: "TweetTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "TWEET_CELL")
+		
 		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 		self.networkController = appDelegate.networkController
 		
@@ -53,22 +55,25 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("TWEET_CELL", forIndexPath: indexPath) as TweetTableViewCell
 		let tweet = self.tweets?[indexPath.row]
-		cell.tweetUserNameLabel.text = tweet?.userName
+		cell.userNameLabel.text = tweet?.userName
 		cell.tweetTextLabel.text = tweet?.text
-		cell.tweetAvatoarImage.image = tweet?.avatarImage
+		if tweet?.avatarImage != nil {
+			cell.avatarImageView.image = tweet?.avatarImage
+		} else {
+			self.networkController.downloadUserImageForTweet(tweet!, completionHandler: { (image) -> Void in
+				let cellForImage = self.tableView.cellForRowAtIndexPath(indexPath) as TweetTableViewCell?
+				cellForImage?.avatarImageView.image = image
+			})
+		}
 		return cell
 	}
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "tweetDetail" {
-			let destinationViewController = segue.destinationViewController as TwitterDetailViewController
-			let indexPath = self.tableView.indexPathForSelectedRow()
-			let selectedTweet = self.tweets?[indexPath!.row]
-			destinationViewController.detailTweet = selectedTweet
-		}
-	}
-	
 	func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+		let tweet = self.tweets?[indexPath.row]
+		
+		let newDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DETAIL_TWEET_VIEW") as TwitterDetailViewController
+		newDetailViewController.detailTweet = tweet
+		self.navigationController?.pushViewController(newDetailViewController, animated: true)
 		
 	}
 }

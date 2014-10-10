@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TwitterDetailViewController: UIViewController {
+class TwitterDetailViewController: UIViewController, UIGestureRecognizerDelegate {
 
 	var detailTweet: Tweet!
 	
@@ -29,6 +29,16 @@ class TwitterDetailViewController: UIViewController {
 		self.retweetLabel.text = detailTweet.retweets! + " Retweets"
 		self.favoritesLabel.text = detailTweet.favorites! + " Favorites"
 		
+		var UIGestureForImage = UITapGestureRecognizer(target: self, action: "tappedImage:")
+		UIGestureForImage.delegate = self
+		self.detailImageVew.addGestureRecognizer(UIGestureForImage)
+		
+		var UIGestureForLabel = UITapGestureRecognizer(target: self, action: "tappedUserName:")
+		UIGestureForLabel.delegate = self
+		self.userNameLabel.addGestureRecognizer(UIGestureForLabel)
+		
+		self.userNameLabel.userInteractionEnabled = true
+		self.detailImageVew.userInteractionEnabled = true
         // Do any additional setup after loading the view.
     }
 
@@ -36,7 +46,24 @@ class TwitterDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	func tappedImage(sender: AnyObject) {
+		let newUserViewController = self.storyboard?.instantiateViewControllerWithIdentifier("USER_TABLE_VIEW_CONTROLLER") as UserSpecificTableViewController
+		newUserViewController.userID = self.detailTweet.userID
+		newUserViewController.avatarImage = self.detailTweet.avatarImage
+		newUserViewController.newUserName = self.detailTweet.userName
+		newUserViewController.userFollwers = self.detailTweet.followers
+		self.navigationController?.pushViewController(newUserViewController, animated: true)
+		
+	}
+	func tappedUserName(sender: AnyObject) {
+		let newUserViewController = self.storyboard?.instantiateViewControllerWithIdentifier("USER_TABLE_VIEW_CONTROLLER") as UserSpecificTableViewController
+		newUserViewController.userID = self.detailTweet.userID
+		newUserViewController.avatarImage = self.detailTweet.avatarImage
+		newUserViewController.newUserName = self.detailTweet.userName
+		newUserViewController.userFollwers = self.detailTweet.followers
+		self.navigationController?.pushViewController(newUserViewController, animated: true)
+	}
 
     /*
     // MARK: - Navigation

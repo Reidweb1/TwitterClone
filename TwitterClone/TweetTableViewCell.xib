@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TWEET_CELL" rowHeight="125" id="kkJ-w7-NbW" customClass="TweetTableViewCell" customModule="TwitterClone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="125"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kkJ-w7-NbW" id="ZXf-O6-XJr">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wao-ev-W75">
+                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="dns-1Y-Dds"/>
+                            <constraint firstAttribute="height" constant="40" id="zbw-ma-BfW"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxL-4Y-akT">
+                        <rect key="frame" x="56" y="9" width="536" height="21"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" none="YES" button="YES" staticText="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="wnX-Vl-DoU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERV-pp-dRO">
+                        <rect key="frame" x="56" y="36" width="536" height="80"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ERV-pp-dRO" firstAttribute="leading" secondItem="GxL-4Y-akT" secondAttribute="leading" id="4tf-er-wkI"/>
+                    <constraint firstItem="ERV-pp-dRO" firstAttribute="leading" secondItem="Wao-ev-W75" secondAttribute="trailing" constant="8" id="8hg-cL-e3c"/>
+                    <constraint firstItem="ERV-pp-dRO" firstAttribute="trailing" secondItem="ZXf-O6-XJr" secondAttribute="trailingMargin" id="8uy-uW-rNv"/>
+                    <constraint firstItem="GxL-4Y-akT" firstAttribute="trailing" secondItem="ZXf-O6-XJr" secondAttribute="trailingMargin" id="C0C-f5-JJd"/>
+                    <constraint firstItem="GxL-4Y-akT" firstAttribute="leading" secondItem="Wao-ev-W75" secondAttribute="trailing" constant="8" id="C7b-N3-1Lu"/>
+                    <constraint firstItem="ERV-pp-dRO" firstAttribute="top" secondItem="GxL-4Y-akT" secondAttribute="bottom" constant="6" id="KXM-a1-aXt"/>
+                    <constraint firstItem="Wao-ev-W75" firstAttribute="leading" secondItem="ZXf-O6-XJr" secondAttribute="leadingMargin" id="StG-kO-Moi"/>
+                    <constraint firstItem="ERV-pp-dRO" firstAttribute="bottom" secondItem="ZXf-O6-XJr" secondAttribute="bottomMargin" id="WBB-pP-ofI"/>
+                    <constraint firstItem="ERV-pp-dRO" firstAttribute="trailing" secondItem="ZXf-O6-XJr" secondAttribute="trailingMargin" id="ZyF-yd-w6g"/>
+                    <constraint firstItem="GxL-4Y-akT" firstAttribute="top" secondItem="ZXf-O6-XJr" secondAttribute="topMargin" constant="1" id="k2l-tC-hTN"/>
+                    <constraint firstItem="Wao-ev-W75" firstAttribute="top" secondItem="ZXf-O6-XJr" secondAttribute="topMargin" id="oNe-Zu-H9P"/>
+                    <constraint firstItem="ERV-pp-dRO" firstAttribute="top" secondItem="GxL-4Y-akT" secondAttribute="bottom" constant="6" id="zuT-iq-ccs"/>
+                    <constraint firstItem="GxL-4Y-akT" firstAttribute="trailing" secondItem="ZXf-O6-XJr" secondAttribute="trailingMargin" id="zwG-k8-biN"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="C7b-N3-1Lu"/>
+                        <exclude reference="zwG-k8-biN"/>
+                        <exclude reference="KXM-a1-aXt"/>
+                        <exclude reference="ZyF-yd-w6g"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" none="YES" button="YES"/>
+            </accessibility>
+            <connections>
+                <outlet property="avatarImageView" destination="Wao-ev-W75" id="chC-Zc-Nxe"/>
+                <outlet property="tweetTextLabel" destination="ERV-pp-dRO" id="m2a-7v-bnA"/>
+                <outlet property="userNameLabel" destination="GxL-4Y-akT" id="HUH-ay-xal"/>
+            </connections>
+            <point key="canvasLocation" x="526" y="342.5"/>
+        </tableViewCell>
+    </objects>
+</document>

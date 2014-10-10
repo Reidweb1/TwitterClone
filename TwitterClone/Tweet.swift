@@ -15,10 +15,13 @@ class Tweet {
 	
 	var text: String?
 	var avatarImage: UIImage?
+	var avatarURL: String?
 	var userName: String?
 	var retweets: String?
 	var favorites: String?
+	var userID: String?
 	var tweetInfoDictionary: NSDictionary?
+	var followers: Int?
 	
 	init (tweetInfo : NSDictionary) {
 		self.tweetInfoDictionary = tweetInfo
@@ -26,30 +29,14 @@ class Tweet {
 		self.text = tweetInfo["text"] as? String
 		let userDictionary = tweetInfo["user"] as NSDictionary
 		self.userName = userDictionary["name"] as? String
-		
-		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-		self.avatarImage = appDelegate.networkController.convertStringToImage((userDictionary["profile_image_url"] as? String)!)
-		
+		self.avatarURL = userDictionary["profile_image_url"] as? String
+		self.userID = userDictionary["id_str"] as? String
 		var retweetInt = tweetInfo["retweet_count"] as? Int
 		var favoriteint = tweetInfo["favorite_count"] as? Int
 		self.retweets = String(retweetInt!)
 		self.favorites = String(favoriteint!)
+		self.followers = userDictionary["followers_count"] as? Int
 	}
-	
-//	func parseToFindFavorite(rawJSONData: NSData) -> String {
-//		var error: NSError?
-//		var favoriteString: String?
-//		if let JSONArray = NSJSONSerialization.JSONObjectWithData(rawJSONData, options: nil, error: &error) as? NSArray {
-//			for JSONDictionary in JSONArray {
-//				if (JSONDictionary["favourites_count"] as? Int) != nil {
-//					favoriteString = String((JSONDictionary["favourites_count"] as? Int)!)
-//				} else {
-//					println("Error in JSONDictionary")
-//				}
-//			}
-//		}
-//		return favoriteString!
-//	}
 	
 	// Factory method will produce the class
 	
