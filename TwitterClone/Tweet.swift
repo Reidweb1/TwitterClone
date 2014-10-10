@@ -22,6 +22,7 @@ class Tweet {
 	var userID: String?
 	var tweetInfoDictionary: NSDictionary?
 	var followers: Int?
+	var sinceID: String = ""
 	
 	init (tweetInfo : NSDictionary) {
 		self.tweetInfoDictionary = tweetInfo
@@ -36,6 +37,7 @@ class Tweet {
 		self.retweets = String(retweetInt!)
 		self.favorites = String(favoriteint!)
 		self.followers = userDictionary["followers_count"] as? Int
+		self.sinceID = tweetInfo["id_str"] as String
 	}
 	
 	// Factory method will produce the class

@@ -15,6 +15,7 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
 	@IBOutlet weak var tableView: UITableView!
 	var tweets : [Tweet]?
 	var networkController : NetworkController!
+	var refreshController: UIRefreshControl!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,20 +25,25 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
 		let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 		self.networkController = appDelegate.networkController
 		
-		self.networkController.fetchHomeTimeline { (errorDescription, tweets) -> Void in
+		self.networkController.fetchHomeTimeline (completionHandler: { (errorDescription, tweets) -> Void in
 			if errorDescription != nil {
 				println("Error")
 			} else {
 				self.tweets = tweets
+				self.tweets!.map{println($0.sinceID)}
 				NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
 					self.tableView.reloadData()
 				})
 			}
-		}
+		})
+		
+		self.refreshController = UIRefreshControl()
+		self.refreshController.attributedTitle = NSAttributedString(string: "Pull To Refresh")
+		self.refreshController.addTarget(self, action: "refreshTableView:", forControlEvents: UIControlEvents.ValueChanged)
+		self.tableView.addSubview(self.refreshController)
 		
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
-		
 		tableView.estimatedRowHeight = 125.0
 		tableView.rowHeight = UITableViewAutomaticDimension
 		
@@ -49,6 +55,21 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
 			return 0
 		} else {
 			return self.tweets!.count
+		}
+	}
+	
+	func refreshTableView(sender: AnyObject!) {
+		self.networkController.fetchHomeTimeline(sinceID: self.tweets!.first!.sinceID) { (errorDescription, tweets) -> Void in
+			
+			for tweet in tweets! {
+				
+				self.tweets?.insert(tweet, atIndex: 0)
+				println(tweet.sinceID)
+			}
+			NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+				self.tableView.reloadData()
+				self.refreshController.endRefreshing()
+			})
 		}
 	}
 

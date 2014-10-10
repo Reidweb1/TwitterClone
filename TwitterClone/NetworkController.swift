@@ -41,7 +41,7 @@ class NetworkController {
 		}
 	}
 	
-	func fetchHomeTimeline(completionHandler: (errorDescription: String?, tweets: [Tweet]?) -> Void) {
+	func fetchHomeTimeline(sinceID: String = "", completionHandler: (errorDescription: String?, tweets: [Tweet]?) -> Void) {
 		
 		let accountStore = ACAccountStore()
 		let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
@@ -53,7 +53,13 @@ class NetworkController {
 				
 				let url = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
 				
-				let twitterRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: url, parameters: nil)
+				var twitterRequest: SLRequest!
+				
+				if sinceID != "" {
+					twitterRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: url, parameters: ["since_id":sinceID])
+				} else {
+					twitterRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: url, parameters: nil)
+				}
 				
 				twitterRequest.account = self.twitterAccount
 				

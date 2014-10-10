@@ -48,24 +48,12 @@
                     <constraint firstItem="ERV-pp-dRO" firstAttribute="leading" secondItem="Wao-ev-W75" secondAttribute="trailing" constant="8" id="8hg-cL-e3c"/>
                     <constraint firstItem="ERV-pp-dRO" firstAttribute="trailing" secondItem="ZXf-O6-XJr" secondAttribute="trailingMargin" id="8uy-uW-rNv"/>
                     <constraint firstItem="GxL-4Y-akT" firstAttribute="trailing" secondItem="ZXf-O6-XJr" secondAttribute="trailingMargin" id="C0C-f5-JJd"/>
-                    <constraint firstItem="GxL-4Y-akT" firstAttribute="leading" secondItem="Wao-ev-W75" secondAttribute="trailing" constant="8" id="C7b-N3-1Lu"/>
-                    <constraint firstItem="ERV-pp-dRO" firstAttribute="top" secondItem="GxL-4Y-akT" secondAttribute="bottom" constant="6" id="KXM-a1-aXt"/>
                     <constraint firstItem="Wao-ev-W75" firstAttribute="leading" secondItem="ZXf-O6-XJr" secondAttribute="leadingMargin" id="StG-kO-Moi"/>
                     <constraint firstItem="ERV-pp-dRO" firstAttribute="bottom" secondItem="ZXf-O6-XJr" secondAttribute="bottomMargin" id="WBB-pP-ofI"/>
-                    <constraint firstItem="ERV-pp-dRO" firstAttribute="trailing" secondItem="ZXf-O6-XJr" secondAttribute="trailingMargin" id="ZyF-yd-w6g"/>
                     <constraint firstItem="GxL-4Y-akT" firstAttribute="top" secondItem="ZXf-O6-XJr" secondAttribute="topMargin" constant="1" id="k2l-tC-hTN"/>
                     <constraint firstItem="Wao-ev-W75" firstAttribute="top" secondItem="ZXf-O6-XJr" secondAttribute="topMargin" id="oNe-Zu-H9P"/>
                     <constraint firstItem="ERV-pp-dRO" firstAttribute="top" secondItem="GxL-4Y-akT" secondAttribute="bottom" constant="6" id="zuT-iq-ccs"/>
-                    <constraint firstItem="GxL-4Y-akT" firstAttribute="trailing" secondItem="ZXf-O6-XJr" secondAttribute="trailingMargin" id="zwG-k8-biN"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="C7b-N3-1Lu"/>
-                        <exclude reference="zwG-k8-biN"/>
-                        <exclude reference="KXM-a1-aXt"/>
-                        <exclude reference="ZyF-yd-w6g"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <accessibility key="accessibilityConfiguration">
                 <accessibilityTraits key="traits" none="YES" button="YES"/>
