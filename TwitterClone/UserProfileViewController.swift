@@ -80,7 +80,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
 		if self.tweets == nil {
 			return 0
 		} else {
-			return self.tweets!.count
+			return self.userTweets!.count
 		}
 	}
 	
