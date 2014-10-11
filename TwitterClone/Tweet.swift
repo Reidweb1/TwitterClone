@@ -25,13 +25,13 @@ class Tweet {
 	var sinceID: String = ""
 	var accountName: String?
 	
+	
 	init (tweetInfo : NSDictionary) {
 		self.tweetInfoDictionary = tweetInfo
 		
 		self.text = tweetInfo["text"] as? String
 		let userDictionary = tweetInfo["user"] as NSDictionary
 		self.userName = userDictionary["name"] as? String
-		self.accountName = tweetInfo["name"] as? String
 		self.avatarURL = userDictionary["profile_image_url"] as? String
 		self.userID = userDictionary["id_str"] as? String
 		var retweetInt = tweetInfo["retweet_count"] as? Int

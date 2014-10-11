@@ -15,7 +15,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
 	var networkController: NetworkController!
 	
 	@IBOutlet weak var userNameLabel: UILabel!
-	@IBOutlet weak var userFollowers: UILabel!
 	@IBOutlet weak var userImageView: UIImageView!
 	@IBOutlet weak var userTweetsTableView: UITableView!
 	
@@ -25,7 +24,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
 	var userName: String?
 	var userNumberOfFollowers: Int?
 	var detailTweet: Tweet?
-	var userID: String?
+	var accountScreenName: String?
 	var userInfoDictionary: NSDictionary?
 	
     override func viewDidLoad() {
@@ -47,18 +46,24 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
 				println("Error")
 			} else {
 				self.tweets = tweets
-				self.detailTweet = self.tweets?[0]
-				self.userInfoDictionary = self.detailTweet?.tweetInfoDictionary
-				self.userID = self.detailTweet?.userID
-				self.networkController.fetchAllTweetsForUser(self.userID!, completionHandler: { (errorDescription, tweets) -> Void in
+				self.accountScreenName = self.networkController.twitterAccount?.username
+				self.networkController.fetchAllTweetsForAccount(self.accountScreenName!, completionHandler: { (errorDescription, tweets) -> Void in
 					if errorDescription != nil {
 						println("Error in fetchAllTweetsForUser")
 					} else {
 						self.userTweets = tweets
 						NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
 							self.userTweetsTableView.reloadData()
-							self.userNameLabel.text = self.detailTweet?.accountName
-							
+							self.detailTweet = self.userTweets?[0]
+							self.userNameLabel.text = self.detailTweet?.userName
+							//self.userImageView.image = self.detailTweet?.avatarImage
+							if self.detailTweet?.avatarImage != nil {
+								self.userImageView.image = self.detailTweet!.avatarImage
+							} else {
+								self.networkController.downloadUserImageForTweet(self.detailTweet!, completionHandler: { (image) -> Void in
+								self.userImageView.image = self.detailTweet!.avatarImage
+								})
+							}
 						})
 					}
 				})

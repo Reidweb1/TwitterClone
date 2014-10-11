@@ -14,11 +14,8 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
 
 	
 	/*
-	*
-	* Notes: 
-	*
-	*
-	*
+	* Note: Cameron and I also achieved the "infinite scroll" and image cache
+	* challenges on his projects.
 	*/
 	
 	@IBOutlet weak var tableView: UITableView!
