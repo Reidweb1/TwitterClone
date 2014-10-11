@@ -12,6 +12,15 @@ import Social
 
 class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+	
+	/*
+	*
+	* Notes: 
+	*
+	*
+	*
+	*/
+	
 	@IBOutlet weak var tableView: UITableView!
 	var tweets : [Tweet]?
 	var networkController : NetworkController!
@@ -30,7 +39,6 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
 				println("Error")
 			} else {
 				self.tweets = tweets
-				self.tweets!.map{println($0.sinceID)}
 				NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
 					self.tableView.reloadData()
 				})
@@ -45,8 +53,7 @@ class HomeTimelineVeiwController: UIViewController, UITableViewDataSource, UITab
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 		tableView.estimatedRowHeight = 125.0
-		tableView.rowHeight = UITableViewAutomaticDimension
-		
+		tableView.rowHeight = UITableViewAutomaticDimension		
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

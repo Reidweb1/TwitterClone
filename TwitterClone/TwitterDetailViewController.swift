@@ -21,8 +21,6 @@ class TwitterDetailViewController: UIViewController, UIGestureRecognizerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		//self.networkController.fetchTweetFavorites(selectedTweet!)
-		
 		self.detailImageVew.image = detailTweet.avatarImage
 		self.userNameLabel.text = detailTweet.userName
 		self.tweetTextLabel.text = detailTweet.text
